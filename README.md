@@ -2,7 +2,7 @@
 
 Next.js hackathon demo: **parallel NER inference** (Base GLiNER vs fine-tuned job), arcade UI, optional **benchmark eval**, and **fine-tuning** against Pioneer’s API.
 
-**Showing a localhost run in your submission is fine** — same app deploys to Vercel with env vars.
+**Demo:** [Jam recording](https://jam.dev/c/f9d1c6ec-e38e-473f-9382-a0d1f661edc8)
 
 ---
 
@@ -35,24 +35,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Deploy (Vercel)
-
-1. Connect the repo and set **Environment variables** (Production):
-
-| Variable | Required | Description |
-|----------|----------|--------------|
-| `PIONEER_API_KEY` | Yes for live API | Server-only; never expose to the client |
-| `PIONEER_BASE_URL` | No | Default `https://api.pioneer.ai` |
-| `PIONEER_BASE_MODEL_ID` | No | Default `base` if your account uses another id |
-| `PIONEER_TRAINING_DATASET` | No | Default `Dataset#0003` (hackathon) |
-| `PIONEER_EVAL_DATASET` | No | Default `Dataset#0004` |
-| `PIONEER_HACKATHON_TITLE` | No | Banner title |
-| `PIONEER_DEPLOYMENT_HINT` | No | Shown if `GET /felix/deployments` is empty |
-
-2. Deploy and test the **production URL** once before submitting.
-
----
-
 ## API routes (thin proxies)
 
 | App route | Pioneer |
@@ -68,16 +50,3 @@ Open [http://localhost:3000](http://localhost:3000).
 | `POST /api/training` | `POST /felix/training-jobs` |
 | `GET /api/training/[id]` | `GET /felix/training-jobs/:id` |
 | `GET /api/config` | Public defaults + `hasApiKey` (boolean only) |
-
----
-
-## Repo hygiene
-
-- **Do not commit** `.env.local` or real API keys (use `.env.example` as a template only).
-- Secrets belong in **Vercel → Settings → Environment Variables**.
-
----
-
-## Stack
-
-Next.js 14 (App Router), TypeScript, Tailwind, Framer Motion, Recharts, Lucide.
