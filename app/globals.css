@@ -3,21 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface-2: #16161f;
+  --border: #1e1e2e;
+  --border-bright: #2e2e4e;
+  --accent: #00ff88;
+  --accent-dim: rgba(0, 255, 136, 0.15);
+  --danger: #ff3366;
+  --warning: #ffaa00;
+  --info: #00aaff;
+  --purple: #cc88ff;
+  --text: #e0e0f0;
+  --text-dim: #6b6b8a;
+  --background: var(--bg);
+  --foreground: var(--text);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
+}
+
+.font-display {
+  font-family: var(--font-barlow), system-ui, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-bright) var(--surface);
 }
 
 @layer utilities {
